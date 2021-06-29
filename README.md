@@ -1,12 +1,10 @@
 Simple and sleek website panel for AdvancedBan.
 * A demo can be found [here](https://karistused.seffcraft.eu/demo/).
 
-## Notable Features
-* Self-host
-* Support multiple AdvancedBan versions
-  * Legacy version 1.2.5
-  * Stable version 2.1.5
-  * Beta version 2.1.6
+## Features
+* Self-hosted
+* Supports the latest AdvancedBan version
+* Easy to Setup
 * Themes
   * Beautiful default and contributor themes
   * Create custom themes
@@ -23,13 +21,16 @@ Simple and sleek website panel for AdvancedBan.
     * Mix and match multiple queries during each search
 * Players
   * Updated in a 5 second interval
-  * Configure server host address and port
+  * Configure the server host address and port
   * Optional query for older servers
   * Enable or disable
 * Navigation
   * Configure custom support link
   * Configure custom appeal link
   * Enable or disable one or both
+* Supports private pages
+  * This means that you can make your bans website only accessible by your staff team with a password
+![Private page form](https://i.imgur.com/CMXkBd7.png)
 
 ## Requirements
 * PHP v7.2.8 recommended
@@ -38,7 +39,19 @@ Simple and sleek website panel for AdvancedBan.
 * Apache mod_rewrite (optional, can be enabled)
 
 ## Installation
-Clone `advancedbans` to a local file location. Navigate to the `database.php` file, which should be located at `static\database.php`. Open the file with a text editor, such as Notepad++ for desktop or Nano for command-line. Enter the credentials for your database in the appropriate place and continue.
+Clone `advancedbans` to your web server. Then open the website and configure the website to your liking.
+![Setup form](https://i.imgur.com/fvfVNqd.png)
+Database configuration is also done thru the same setup form.
+
+## How to reconfigure/redo the setup
+If you messed up during the setup or need to change some things then you can navigate to `static/configuration.json` in the folder where you ban website is located and open the file `configuration.json`. In there you will find different options which you can change but if you prefer to make the changes on the setup form itself then change setup completed to false
+```json
+"setup": {
+    "completed": false
+```
+
+If you would like to change your database changes then you can open the `database.php` file in the folder `static/`.
+The database file looks like this (The values may be different for you):
 ```php
 <?php
 
@@ -46,11 +59,11 @@ define("DATABASE_HOST", "host");
 define("DATABASE_USER", "user");
 define("DATABASE_PASSWORD", "password");
 define("DATABASE_DATABASE", "database");
-```
+``` 
+You can also change the database settings thru the website setup form by setting setup completed to false in the configuration file located at `static/configuration.json`. But keep in mind that this will then require you to redo the whole setup form.
+It is recommended to keep the version set to `stable` as changing this to `legacy` or `beta` may cause some issues.
 
-Configuration options are also available for AdvancedBans. These options allow you to change how AdvancedBans functions. The configuration file for AdvancedBans is located at `static\configuration.json`. Once you have made changes to the configuration file, I would suggest placing the configuration file in a JSON validator to make sure you have not removed something you should not have.
-
-Please note that the **version** must be changed from **stable** to **legacy** or **beta** in order to use AdvancedBans with AdvancedBan version 1.2.5 or 2.1.6. **Stable** denotes use of AdvancedBan version 2.1.5.
+## Default configuration file
 ```json
 {
     "version": "stable",
@@ -65,19 +78,26 @@ Please note that the **version** must be changed from **stable** to **legacy** o
     },
     "player_count": {
         "enabled": true,
-        "query": false,
+		"query": false,
         "host": "mc.hypixel.net",
-        "port": "25565"
+		"port": "25565"
     },
     "navigation": {
         "contact": {
-            "enabled": true,
+            "enabled": false,
             "link": "http://example.com/contact"
         },
         "appeal": {
-            "enabled": true,
+            "enabled": false,
             "link": "http://example.com/appeal"
         }
+    },
+    "private_page": {
+        "enabled": false,
+        "password": "default"
+    },
+    "setup": {
+        "completed": true
     }
 }
 ```
