@@ -1,0 +1,26 @@
+.text-title {
+    margin-top: 45px;
+}
+
+.text-basic {
+    font-size: 24px;
+}
+
+.submit-button {
+    margin-left: 660px;
+    z-index: 1;
+}
+
+.passwordfield {
+    width: 100%;
+    margin-top: 20px;
+    padding-left: 100px;
+    padding-right: 400px;
+    margin-left: 300px;
+}
+
+.shadow {
+    border-radius: 4px;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}

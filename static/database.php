@@ -1,6 +1,6 @@
 <?php
 
-define("DATABASE_HOST", "host");
-define("DATABASE_USER", "user");
-define("DATABASE_PASSWORD", "password");
-define("DATABASE_DATABASE", "database");
+define("DATABASE_HOST", "{DB_HOST}");
+define("DATABASE_USER", "{DB_USER}");
+define("DATABASE_PASSWORD", "{DB_PASSWORD}");
+define("DATABASE_DATABASE", "{DB_NAME}");

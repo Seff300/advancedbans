@@ -66,6 +66,13 @@ $__network->send( );
 		<?= $__theme->get("stylesheet", "css") ?>
 	</head>
 	<body>
+
+	<?php
+	if($__configuration->get(["private_page", "enabled"]) === true) {
+		header('Location: pages/private.php');
+	}
+	?>
+
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 			<div class="container">
 				<a class="navbar-brand" href="./"><?= $__configuration->get(["language", "title"]) ?></a>
