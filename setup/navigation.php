@@ -1,3 +1,15 @@
+<?php
+
+$json_string = file_get_contents('../static/configuration.json');
+	$parsed_json = json_decode($json_string, true);
+	foreach ($parsed_json as $key => $value) {
+		if ($parsed_json['setup']['completed'] == 'true') {
+			header('Location: ../');
+			exit();
+		}
+	}
+?>
+
 <html>
 <head>
     <meta charset="utf-8">

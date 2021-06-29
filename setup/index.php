@@ -1,3 +1,14 @@
+<?php
+
+$json_string = file_get_contents('../static/configuration.json');
+	$parsed_json = json_decode($json_string, true);
+	foreach ($parsed_json as $key => $value) {
+		if ($parsed_json['setup']['completed'] == 'true') {
+			header('Location: ../');
+			exit();
+		}
+	}
+?>
 <html>
 <head>
     <meta charset="utf-8">
@@ -182,7 +193,6 @@ if(isset($_POST['setup'])) {
                     <option value="fr-FR">French</option>
                     <option value="hu-HU">Hungarian</option>
                     <option value="nl-NL">Dutch</option>
-                    <option value="fr-FR">French</option>
                     <option value="pl-PL">Polish</option>
                     <option value="sk-SK">Slovak</option>
                     <option value="sv-SE">Swedish</option>
