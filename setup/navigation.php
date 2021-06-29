@@ -83,7 +83,7 @@ if(isset($_POST['setup'])) {
         $contactenabled = $_POST['contactenabled'];
         $jsonData = file_get_contents('../static/configuration.json');
         $arrayData = json_decode($jsonData, true);
-        $replacementData = array('navigation' => array('contact' => array('enabled' => $contactenabled)));
+        $replacementData = array('navigation' => array('contact' => array('enabled' => 'true')));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
         $newJsonData = json_encode($newArrayData);
         file_put_contents('../static/configuration.json', $newJsonData);
@@ -110,17 +110,14 @@ if(isset($_POST['setup'])) {
         $appealenabled = $_POST['appealenabled'];
         $jsonData = file_get_contents('../static/configuration.json');
         $arrayData = json_decode($jsonData, true);
-        $replacementData = array('navigation' => array('appeal' => array('enabled' => $appealenabled)));
+        $replacementData = array('navigation' => array('appeal' => array('enabled' => 'true')));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
         $newJsonData = json_encode($newArrayData);
         file_put_contents('../static/configuration.json', $newJsonData);
-    }
-
-    if(isset($_POST['appealdisabled'])) {
-        $appealdisabled = $_POST['appealdisabled'];
+    } else {
         $jsonData = file_get_contents('../static/configuration.json');
         $arrayData = json_decode($jsonData, true);
-        $replacementData = array('navigation' => array('appeal' => array('enabled' => $appealdisabled)));
+        $replacementData = array('navigation' => array('appeal' => array('enabled' => 'false')));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
         $newJsonData = json_encode($newArrayData);
         file_put_contents('../static/configuration.json', $newJsonData);
@@ -202,14 +199,8 @@ if(isset($_POST['setup'])) {
             <div class="form-check field">
                 <label for="playercount">Enabled:</label>
                 <label class="form-check-label shadow-1">
-                    <input type="checkbox" class="form-check-input themeshadow" id="appealenabled" name="appealenabled" value="true">True
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-check field">
-                <label class="form-check-label shadow-2">
-                    <input type="checkbox" class="form-check-input shadow" id="appealdisabled" name="appealdisabled" value="false">False
+                    <input type="checkbox" class="form-check-input shadow" id="appealenabled" name="appealenabled" value="true">
+                    <div id="checkbox-appeal"></div>
                 </label>
             </div>
         </div>
@@ -256,6 +247,18 @@ $("#privateenabled").on('change', function() {
   }
   
   $('#checkbox-private').text($('#privateenabled').val());
+});
+
+$('#checkbox-appeal').text($('#appealenabled').val());
+
+$("#appealenabled").on('change', function() {
+  if ($(this).is(':checked')) {
+    $(this).attr('value', 'True');
+  } else {
+    $(this).attr('value', 'False');
+  }
+  
+  $('#checkbox-appeal').text($('#appealenabled').val());
 });
 </script>
 </body>

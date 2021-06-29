@@ -13,19 +13,20 @@
 <body>
 
 <?php
+error_reporting(0);
 if(isset($_POST['submit'])) {
     if(isset($_POST['password'])) {
-        $password       = $_POST['password']; // I think you miss this
+        $password       = $_POST['password'];
         $json_string = file_get_contents('../static/configuration.json');
         $parsed_json = json_decode($json_string, true);
         $flag        = false;
         foreach ($parsed_json as $key => $value) {
             if ($password == $parsed_json['private_page']['password']) {
-                header('Location: /');
+                header('Location: ../');
                 exit();
             }
+            $error = 'Wrong password! Please re-check that you typed in the right password.';
         }
-        echo "Wrong password! Please re-check that you typed in the right password.";
     }
 }
 ?>
@@ -42,6 +43,9 @@ if(isset($_POST['submit'])) {
 
 <div class="container">
     <form method="POST">
+        <div class="row justify-content-center">
+            <p class="error"><?php echo $error?></p>
+        </div>
         <div class="row">
             <div class="form-group passwordfield">
                 <input type="password" class="form-control shadow" id="password" placeholder="Enter the password to access this page" name="password" required>

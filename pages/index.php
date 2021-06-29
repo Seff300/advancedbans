@@ -68,8 +68,19 @@ $__network->send( );
 	<body>
 
 	<?php
-	if($__configuration->get(["private_page", "enabled"]) === true) {
-		header('Location: pages/private.php');
+	$json_string = file_get_contents('static/configuration.json');
+	$parsed_json = json_decode($json_string, true);
+	foreach ($parsed_json as $key => $value) {
+		if ($parsed_json['setup']['completed'] == 'false') {
+			header('Location: setup/');
+			exit();
+		}
+	}
+	foreach ($parsed_json as $key => $value) {
+		if ($parsed_json['private_page']['enabled'] == 'true') {
+			header('Location: pages/private');
+			exit();
+		}
 	}
 	?>
 

@@ -13,42 +13,6 @@
 <body>
 
 <?php
-function indent($text)
-{
-    // Create new lines where necessary
-    $find = array('>', '</', "\n\n");
-    $replace = array(">\n", "\n</", "\n");
-    $text = str_replace($find, $replace, $text);
-    $text = trim($text); // for the \n that was added after the final tag
-
-    $text_array = explode("\n", $text);
-    $open_tags = 0;
-    foreach ($text_array AS $key => $line)
-    {
-        if (($key == 0) || ($key == 1)) // The first line shouldn't affect the indentation
-            $tabs = '';
-        else
-        {
-            for ($i = 1; $i <= $open_tags; $i++)
-                $tabs .= "\t";
-        }
-
-        if ($key != 0)
-        {
-            if ((strpos($line, '</') === false) && (strpos($line, '>') !== false))
-                $open_tags++;
-            else if ($open_tags > 0)
-                $open_tags--;
-        }
-
-        $new_array[] = $tabs . $line;
-
-        unset($tabs);
-    }
-    $indented_text = implode("\n", $new_array);
-
-    return $indented_text;
-}
 
 if(isset($_POST['setup'])) {
     if(isset($_POST['databasehost']) && isset($_POST['databaseuser']) && isset($_POST['databasepassword']) && isset($_POST['databasename'])) {
