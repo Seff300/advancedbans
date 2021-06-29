@@ -1,5 +1,5 @@
 Simple and sleek website panel for AdvancedBan.
-* Example can be found at [here](https://mathhulk.me/advancedbans/example).
+* A demo can be found [here](https://karistused.seffcraft.eu/demo/).
 
 ## Notable Features
 * Self-host
