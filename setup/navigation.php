@@ -217,7 +217,7 @@ if(isset($_POST['setup'])) {
         </div>
         <div class="row">
             <div class="submit-button1 themeshadow">
-                <a href="index" class="btn btn-success">➞ Back</a>
+                <a href="index" class="btn btn-success">🠔 Back</a>
             </div>
         </div>
     </form>

@@ -85,7 +85,7 @@ if(isset($_POST['setup'])) {
         </div>
         <div class="row">
             <div class="submit-button1 shadow">
-                <a href="navigation" class="btn btn-success">➞ Back</a>
+                <a href="navigation" class="btn btn-success">🠔 Back</a>
             </div>
         </div>
     </form>
