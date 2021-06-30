@@ -26,6 +26,7 @@
 		"expires": "Verloop op",
 		"type": "Typ",
 		"status": "Staat",
+		"filter": "Filter",
 		"ban": "Ban",
 		"temp_ban": "Temp. Bann",
 		"ip_ban": "I.P. Bann",

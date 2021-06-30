@@ -26,6 +26,7 @@
 		"expires": "Lejár",
 		"type": "Típus",
 		"status": "Állapot",
+		"filter": "Filter",
 		"ban": "Kitiltva",
 		"temp_ban": "Tartós kitiltás",
 		"ip_ban": "I.P. tiltás",

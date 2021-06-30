@@ -26,6 +26,7 @@
 		"expires": "Wygasa",
 		"type": "Typ",
 		"status": "Status",
+		"filter": "Filter",
 		"ban": "Ban",
 		"temp_ban": "Tymczas. Ban",
 		"ip_ban": "Ban I.P.",

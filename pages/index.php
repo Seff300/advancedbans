@@ -93,6 +93,8 @@ $__network->send( );
 						}
 						
 						?>
+
+
 					</ul>
 				
 					<ul class="navbar-nav ml-auto">
@@ -182,9 +184,10 @@ $__network->send( );
 							<a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $__language->get("credit", "Credit") ?> <span class="caret"><!-- icon --></span></a>
 							
 							<ul class="dropdown-menu dropdown-menu-right">
-								<a class="dropdown-item" target="_blank" href="https://github.com/mathhulk/advancedban-panel">GitHub</a>
+								<a class="dropdown-item" target="_blank" href="https://github.com/Seff300/advancedbans">GitHub</a>
 								<a class="dropdown-item" target="_blank" href="https://www.spigotmc.org/resources/advancedban.8695/">AdvancedBan</a>
 								<a class="dropdown-item" target="_blank" href="https://mathhulk.com">mathhulk</a>
+								<a class="dropdown-item" target="_blank" href="https://seffcraft.eu">Seff300</a>
 							</ul>
 						</li>
 					</ul>
@@ -226,7 +229,7 @@ $__network->send( );
 							</div>
 						</div>
 						
-						<button class="btn btn-primary" type="button" id="filter">Filter</button>
+						<button class="btn btn-primary" type="button" id="filter"><?= $__language->get("filter", "Filter") ?></button>
 					</div>
 				</div>
 			</div>
@@ -258,5 +261,15 @@ $__network->send( );
 		<script type="text/javascript" src="static/resources/javascript/advancedbans.js"></script>
 		
 		<?= $__theme->get("script", "js") ?>
+
+		<?php
+
+		if($__configuration->get(["player_count", "enabled"]) === true) {
+			?>
+				<h2>Test</h2>
+			<?php
+		}
+
+		?>
 	</body>
 </html>

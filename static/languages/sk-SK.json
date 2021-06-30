@@ -24,6 +24,7 @@
 		"operator": "Operátor",
 		"type": "Typ",
 		"status": "Priebeh",
+		"filter": "Filter",
 		"ban": "Ban",
 		"temp_ban": "Temp. Ban",
 		"ip_ban": "I.P. Ban",

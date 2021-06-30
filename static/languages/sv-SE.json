@@ -26,6 +26,7 @@
         "expires": "Upphör",
         "type": "Typ",
         "status": "Status",
+        "filter": "Filter",
         "ban": "Bannlysning",
         "temp_ban": "Tillfällig Bannlysning",
         "ip_ban": "IP Bannlysning",

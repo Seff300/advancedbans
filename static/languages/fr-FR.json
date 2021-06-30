@@ -26,6 +26,7 @@
 		"expires": "Expiration",
 		"type": "Type",
 		"status": "Status",
+		"filter": "Filter",
 		"ban": "Ban",
 		"temp_ban": "Ban Temporaire",
 		"ip_ban": "Ban I.P.",
