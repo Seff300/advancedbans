@@ -31,5 +31,8 @@
     },
     "setup": {
         "completed": true
+    },
+    "update": {
+        "version": false
     }
 }

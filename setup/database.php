@@ -39,7 +39,7 @@ if(isset($_POST['setup'])) {
         $fh = fopen("../static/database.php", 'w');
         $file = str_replace($searchF, $replaceW, $file);
         fwrite($fh, $file);
-        fclose($fh, $file);
+        fclose($fh);
         $jsonData = file_get_contents('../static/configuration.json');
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('setup' => array('completed' => 'true'));
