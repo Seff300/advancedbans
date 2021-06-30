@@ -262,14 +262,5 @@ $__network->send( );
 		
 		<?= $__theme->get("script", "js") ?>
 
-		<?php
-
-		if($__configuration->get(["player_count", "enabled"]) === true) {
-			?>
-				<h2>Test</h2>
-			<?php
-		}
-
-		?>
 	</body>
 </html>
