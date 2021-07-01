@@ -1,1 +1,35 @@
-{"version":"stable","mod_rewrite":false,"default":{"theme":"Default","language":"en-US"},"language":{"title":"Advancedbans","description":"AdvancedBans Punishments"},"player_count":{"enabled":"true","query":"false","host":"example.com","port":""},"navigation":{"contact":{"enabled":"true","link":"https://example.com"},"appeal":{"enabled":"true","link":"https://example.com/appeal"}},"private_page":{"enabled":"false","password":"default"},"setup":{"completed":"false"}}
+{
+    "version": "stable",
+    "mod_rewrite": false,
+    "default": {
+        "theme": "Default",
+        "language": "en-US"
+    },
+    "language": {
+        "title": "AdvancedBans",
+        "description": "AdvancedBans Punishment website"
+    },
+    "player_count": {
+        "enabled": "true",
+        "query": "false",
+        "host": "mc.seffcraft.eu",
+        "port": ""
+    },
+    "navigation": {
+        "contact": {
+            "enabled": true,
+            "link": "https:\/\/seffcraft.eu"
+        },
+        "appeal": {
+            "enabled": true,
+            "link": "https:\/\/seffcraft.eu\/appeal"
+        }
+    },
+    "private_page": {
+        "enabled": false,
+        "password": ""
+    },
+    "setup": {
+        "completed": true
+    }
+}

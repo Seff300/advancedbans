@@ -30,7 +30,7 @@
         "password": "default"
     },
     "setup": {
-        "completed": true
+        "completed": false
     },
     "update": {
         "version": false

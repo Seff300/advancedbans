@@ -23,3 +23,6 @@ td {
 td img {
 	margin-right: 10px;
 }
+
+.warning {background-color: #ffae00;} /* Orange */
+.warning:hover {background: #e69600;}

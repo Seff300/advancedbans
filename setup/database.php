@@ -42,14 +42,18 @@ if(isset($_POST['setup'])) {
         fclose($fh);
         $jsonData = file_get_contents('../static/configuration.json');
         $arrayData = json_decode($jsonData, true);
-        $replacementData = array('setup' => array('completed' => 'true'));
+        $replacementData = array('setup' => array('completed' => true));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
-    header('Location: /');
-    exit();
+    if (headers_sent()) {
+        die('Redirect failed. Please <a href="../">Click here</a> to go to the front page.');
+    }
+    else {
+        exit(header("Location: ../"));
+    }
 
 }
 ?>

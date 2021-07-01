@@ -25,58 +25,22 @@ $json_string = file_get_contents('../static/configuration.json');
 <body>
 
 <?php
-function indent($text)
-{
-    // Create new lines where necessary
-    $find = array('>', '</', "\n\n");
-    $replace = array(">\n", "\n</", "\n");
-    $text = str_replace($find, $replace, $text);
-    $text = trim($text); // for the \n that was added after the final tag
-
-    $text_array = explode("\n", $text);
-    $open_tags = 0;
-    foreach ($text_array AS $key => $line)
-    {
-        if (($key == 0) || ($key == 1)) // The first line shouldn't affect the indentation
-            $tabs = '';
-        else
-        {
-            for ($i = 1; $i <= $open_tags; $i++)
-                $tabs .= "\t";
-        }
-
-        if ($key != 0)
-        {
-            if ((strpos($line, '</') === false) && (strpos($line, '>') !== false))
-                $open_tags++;
-            else if ($open_tags > 0)
-                $open_tags--;
-        }
-
-        $new_array[] = $tabs . $line;
-
-        unset($tabs);
-    }
-    $indented_text = implode("\n", $new_array);
-
-    return $indented_text;
-}
 
 if(isset($_POST['setup'])) {
     if(isset($_POST['privateenabled'])) {
         $privateenabled = $_POST['privateenabled'];
         $jsonData = file_get_contents('../static/configuration.json');
         $arrayData = json_decode($jsonData, true);
-        $replacementData = array('private_page' => array('enabled' => 'true'));
+        $replacementData = array('private_page' => array('enabled' => true));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     } else {
         $jsonData = file_get_contents('../static/configuration.json');
         $arrayData = json_decode($jsonData, true);
-        $replacementData = array('private_page' => array('enabled' => 'false'));
+        $replacementData = array('private_page' => array('enabled' => false));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
     
@@ -86,7 +50,7 @@ if(isset($_POST['setup'])) {
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('private_page' => array('password' => $privatepassword));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
@@ -95,16 +59,16 @@ if(isset($_POST['setup'])) {
         $contactenabled = $_POST['contactenabled'];
         $jsonData = file_get_contents('../static/configuration.json');
         $arrayData = json_decode($jsonData, true);
-        $replacementData = array('navigation' => array('contact' => array('enabled' => 'true')));
+        $replacementData = array('navigation' => array('contact' => array('enabled' => true)));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     } else {
         $jsonData = file_get_contents('../static/configuration.json');
         $arrayData = json_decode($jsonData, true);
-        $replacementData = array('navigation' => array('contact' => array('enabled' => 'false')));
+        $replacementData = array('navigation' => array('contact' => array('enabled' => false)));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
@@ -114,7 +78,7 @@ if(isset($_POST['setup'])) {
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('navigation' => array('contact' => array('link' => $contactlink)));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
@@ -122,16 +86,16 @@ if(isset($_POST['setup'])) {
         $appealenabled = $_POST['appealenabled'];
         $jsonData = file_get_contents('../static/configuration.json');
         $arrayData = json_decode($jsonData, true);
-        $replacementData = array('navigation' => array('appeal' => array('enabled' => 'true')));
+        $replacementData = array('navigation' => array('appeal' => array('enabled' => true)));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     } else {
         $jsonData = file_get_contents('../static/configuration.json');
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('navigation' => array('appeal' => array('enabled' => 'false')));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
@@ -141,11 +105,16 @@ if(isset($_POST['setup'])) {
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('navigation' => array('appeal' => array('link' => $appeallink)));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
-    header('Location: database.php');
+    if (headers_sent()) {
+        die('Redirect failed. Please <a href="database.php">Click here</a> to go to the next page.');
+    }
+    else {
+        exit(header("Location: database.php"));
+    }
 
 }
 ?>

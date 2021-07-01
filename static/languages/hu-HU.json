@@ -27,6 +27,7 @@
 		"type": "Típus",
 		"status": "Állapot",
 		"filter": "Filter",
+		"development": "This is a development version. Proceed with caution!",
 		"ban": "Kitiltva",
 		"temp_ban": "Tartós kitiltás",
 		"ip_ban": "I.P. tiltás",

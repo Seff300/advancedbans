@@ -93,6 +93,20 @@ $__network->send( );
 						}
 						
 						?>
+						<li class="nav-item active">
+						<?php
+						error_reporting(E_ALL);
+							$json_string = file_get_contents('static/update.json');
+							$parsed_json = json_decode($json_string, true);
+							foreach ($parsed_json as $key => $value) {
+								if ($parsed_json['update']['version'] == 'dev') {
+									?>
+										<a class="nav-link btn warning" href="./"><?= $__language->get("development", "Development") ?></a>
+									<?php
+									}
+								}
+						?>
+						</li>
 
 
 					</ul>

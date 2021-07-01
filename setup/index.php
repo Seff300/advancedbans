@@ -24,42 +24,6 @@ $json_string = file_get_contents('../static/configuration.json');
 <body>
 
 <?php
-function indent($text)
-{
-    // Create new lines where necessary
-    $find = array('>', '</', "\n\n");
-    $replace = array(">\n", "\n</", "\n");
-    $text = str_replace($find, $replace, $text);
-    $text = trim($text); // for the \n that was added after the final tag
-
-    $text_array = explode("\n", $text);
-    $open_tags = 0;
-    foreach ($text_array AS $key => $line)
-    {
-        if (($key == 0) || ($key == 1)) // The first line shouldn't affect the indentation
-            $tabs = '';
-        else
-        {
-            for ($i = 1; $i <= $open_tags; $i++)
-                $tabs .= "\t";
-        }
-
-        if ($key != 0)
-        {
-            if ((strpos($line, '</') === false) && (strpos($line, '>') !== false))
-                $open_tags++;
-            else if ($open_tags > 0)
-                $open_tags--;
-        }
-
-        $new_array[] = $tabs . $line;
-
-        unset($tabs);
-    }
-    $indented_text = implode("\n", $new_array);
-
-    return $indented_text;
-}
 
 if(isset($_POST['setup'])) {
     if(isset($_POST['themevalue'])) {
@@ -68,7 +32,7 @@ if(isset($_POST['setup'])) {
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('default' => array('theme' => $theme));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
@@ -78,7 +42,7 @@ if(isset($_POST['setup'])) {
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('default' => array('language' => $language));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
@@ -88,7 +52,7 @@ if(isset($_POST['setup'])) {
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('language' => array('title' => $title));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
@@ -98,7 +62,7 @@ if(isset($_POST['setup'])) {
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('language' => array('description' => $description));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
@@ -108,7 +72,7 @@ if(isset($_POST['setup'])) {
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('player_count' => array('enabled' => 'true'));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     } else {
         $jsonData = file_get_contents('../static/configuration.json');
@@ -125,14 +89,14 @@ if(isset($_POST['setup'])) {
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('player_count' => array('query' => 'true'));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     } else {
         $jsonData = file_get_contents('../static/configuration.json');
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('player_count' => array('query' => 'false'));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
@@ -142,7 +106,7 @@ if(isset($_POST['setup'])) {
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('player_count' => array('host' => $ip));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
@@ -152,12 +116,16 @@ if(isset($_POST['setup'])) {
         $arrayData = json_decode($jsonData, true);
         $replacementData = array('player_count' => array('port' => $port));
         $newArrayData = array_replace_recursive($arrayData, $replacementData);
-        $newJsonData = json_encode($newArrayData);
+        $newJsonData = json_encode($newArrayData, JSON_PRETTY_PRINT);
         file_put_contents('../static/configuration.json', $newJsonData);
     }
 
-    header('Location: navigation.php');
-
+    if (headers_sent()) {
+        die('Redirect failed. Please <a href="navigation.php">Click here</a> to go to the next page.');
+    }
+    else {
+        exit(header("Location: navigation.php"));
+    }
 
 }
 ?>

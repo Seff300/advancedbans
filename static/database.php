@@ -1,6 +1,6 @@
 <?php
 
-define("DATABASE_HOST", "{DB_HOST}");
-define("DATABASE_USER", "{DB_USER}");
-define("DATABASE_PASSWORD", "{DB_PASSWORD}");
-define("DATABASE_DATABASE", "{DB_NAME}");
+define("DATABASE_HOST", "45.86.168.220");
+define("DATABASE_USER", "u638_d65JJXlkom");
+define("DATABASE_PASSWORD", "=jDi@g0bYqbkd8X09w^1X@ld");
+define("DATABASE_DATABASE", "s638_karistusedv4");

@@ -27,6 +27,7 @@
 		"type": "Typ",
 		"status": "Status",
 		"filter": "Filter",
+		"development": "This is a development version. Proceed with caution!",
 		"ban": "Ban",
 		"temp_ban": "Temp. Bann",
 		"ip_ban": "I.P. Bann",
