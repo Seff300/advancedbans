@@ -30,6 +30,6 @@
         "password": ""
     },
     "setup": {
-        "completed": true
+        "completed": false
     }
 }
