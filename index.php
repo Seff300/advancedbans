@@ -3,15 +3,17 @@
 $json_string = file_get_contents('static/configuration.json');
 	$parsed_json = json_decode($json_string, true);
 	foreach ($parsed_json as $key => $value) {
-		if ($parsed_json['setup']['completed'] == 'false') {
+		if ($parsed_json['setup']['completed'] == false) {
 			header('Location: setup/');
 			exit();
 		}
 	}
 	foreach ($parsed_json as $key => $value) {
-		if ($parsed_json['private_page']['enabled'] == 'true') {
-			header('Location: pages/private');
-			exit();
+		if ($parsed_json['private_page']['enabled'] == true) {
+			if (empty($_SERVER['HTTP_REFERER']) or $_SERVER['HTTP_REFERER'] == '-') {
+				header('Location: pages/private');
+				exit; // do nothing if hit directly.
+			}
 		}
 	}
     

@@ -1,5 +1,13 @@
 <?php
 
+$json_string = file_get_contents('static/configuration.json');
+	$parsed_json = json_decode($json_string, true);
+	foreach ($parsed_json as $key => $value) {
+		if ($parsed_json['debug']['enabled'] == true) {
+			error_reporting(E_ALL);
+		}
+	}
+
 $__configuration = AdvancedBans::getConfiguration( );
 $__language = AdvancedBans::getLanguage( );
 $__theme = AdvancedBans::getTheme( );
@@ -95,16 +103,30 @@ $__network->send( );
 						?>
 						<li class="nav-item active">
 						<?php
-						error_reporting(E_ALL);
 							$json_string = file_get_contents('static/update.json');
 							$parsed_json = json_decode($json_string, true);
-							foreach ($parsed_json as $key => $value) {
+							$json_web = file_get_contents('https://drivemc.seffcraft.eu/api/update/version.json');
+							$parsed_webjson = json_decode($json_web, true);
+							$json_config = file_get_contents('static/configuration.json');
+							$parsed_configjson = json_decode($json_config, true);
+							foreach ($parsed_json as $key => $value ) {
 								if ($parsed_json['update']['version'] == 'dev') {
 									?>
 										<a class="nav-link btn warning" href="./"><?= $__language->get("development", "Development") ?></a>
 									<?php
 									}
+							foreach ($parsed_webjson as $key => $value ) {
+									if ($parsed_configjson['private_page']['enabled'] == true) {
+											if ($parsed_json['update']['version'] !== $parsed_webjson['update']['version']) {
+												if ($parsed_json['update']['version'] !== 'dev') {
+												?>
+													<a class="nav-link btn btn-primary" href="https://www.spigotmc.org/resources/advancedbans.93736/"><?= $__language->get("update", "Update") ?></a>
+												<?php
+												}
+											}
+										}
 								}
+							}
 						?>
 						</li>
 

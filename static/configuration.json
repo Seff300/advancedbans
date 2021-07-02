@@ -27,9 +27,12 @@
     },
     "private_page": {
         "enabled": false,
-        "password": ""
+        "password": "default"
     },
     "setup": {
-        "completed": false
+        "completed": true
+    },
+    "debug": {
+        "enabled": true
     }
 }

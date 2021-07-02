@@ -13,7 +13,7 @@
 <body>
 
 <?php
-error_reporting(0);
+error_reporting(E_ALL);
 if(isset($_POST['submit'])) {
     if(isset($_POST['password'])) {
         $password       = $_POST['password'];
