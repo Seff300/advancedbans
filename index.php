@@ -7,6 +7,8 @@ $json_string = file_get_contents('static/configuration.json');
 			header('Location: setup/');
 			exit();
 		}
+		if ($parsed_json['setup']['completed'] == true) {
+		}
 	}
 	foreach ($parsed_json as $key => $value) {
 		if ($parsed_json['private_page']['enabled'] == true) {
