@@ -18,11 +18,11 @@
     "navigation": {
         "contact": {
             "enabled": true,
-            "link": "https:\/\/seffcraft.eu"
+            "link": "https://example.com/"
         },
         "appeal": {
             "enabled": true,
-            "link": "https:\/\/seffcraft.eu\/appeal"
+            "link": "https://example.com/appeal"
         }
     },
     "private_page": {
@@ -30,9 +30,9 @@
         "password": "default"
     },
     "setup": {
-        "completed": true
+        "completed": false
     },
     "debug": {
-        "enabled": true
+        "enabled": false
     }
 }
