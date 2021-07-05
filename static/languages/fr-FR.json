@@ -28,6 +28,7 @@
 		"status": "Status",
 		"filter": "Filter",
 		"development": "This is a development version. Proceed with caution!",
+		"update": "There is a new update available! Download it here.",
 		"ban": "Ban",
 		"temp_ban": "Ban Temporaire",
 		"ip_ban": "Ban I.P.",

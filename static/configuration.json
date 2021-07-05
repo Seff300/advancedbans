@@ -12,7 +12,7 @@
     "player_count": {
         "enabled": "true",
         "query": "false",
-        "host": "mc.seffcraft.eu",
+        "host": "example.com",
         "port": ""
     },
     "navigation": {
@@ -30,7 +30,7 @@
         "password": "default"
     },
     "setup": {
-        "completed": false
+        "completed": true
     },
     "debug": {
         "enabled": false

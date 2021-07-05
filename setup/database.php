@@ -19,7 +19,7 @@ $json_string = file_get_contents('../static/configuration.json');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js" integrity="sha512-nhY06wKras39lb9lRO76J4397CH1XpRSLfLJSftTeo3+q2vP7PaebILH9TqH+GRpnOhfAGjuYMVmVTOZJ+682w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        $(function(){ $("head").load("head.html") });
+        $(function(){ $("head").load("../static/resources/setuphead.html") });
     </script>
 </head>
 <body>

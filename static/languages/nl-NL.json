@@ -28,6 +28,7 @@
 		"status": "Staat",
 		"filter": "Filter",
 		"development": "This is a development version. Proceed with caution!",
+		"update": "There is a new update available! Download it here.",
 		"ban": "Ban",
 		"temp_ban": "Temp. Bann",
 		"ip_ban": "I.P. Bann",
